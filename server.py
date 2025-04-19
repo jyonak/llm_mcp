@@ -75,6 +75,25 @@ def query_ollama_sync(content: str, retries=3) -> str:
             logger.error(traceback.format_exc())
             raise last_error
 
+@mcp.tool("ask_llm")
+def ask_llm(prompt: str) -> Dict[str, Any]:
+    """Send a direct prompt to the local Deepseek LLM"""
+    try:
+        result = query_ollama_sync(prompt)
+        return {
+            "status": "success",
+            "response": result,
+            "model": "deepseek-r1"
+        }
+    except Exception as e:
+        logger.error(f"Error querying Deepseek LLM: {str(e)}")
+        logger.error(traceback.format_exc())
+        return {
+            "status": "error",
+            "error": str(e)
+        }
+
+
 @mcp.tool("process_url_with_llm")
 def process_url_with_llm(url: str, query: str = None) -> Dict[str, Any]:
     """Process URL content with Ollama"""
@@ -111,6 +130,8 @@ def process_url_with_llm(url: str, query: str = None) -> Dict[str, Any]:
             "url": url,
             "error": str(e)
         }
+
+
 
 if __name__ == "__main__":
     mcp.run()
