@@ -1,0 +1,17 @@
+{
+    "servers": {
+        "process_url_with_llm": {
+            "command": "${workspaceFolder}/.venv/bin/python3",
+            "args": [
+                "${workspaceFolder}/server.py",
+                "--host=localhost",
+                "--port=7070",
+                "--workers=1"
+            ],
+            "env": {
+                "PYTHONUNBUFFERED": "1",
+                "LOG_LEVEL": "DEBUG"
+            }
+        }
+    }
+}
