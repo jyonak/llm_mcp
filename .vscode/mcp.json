@@ -3,10 +3,7 @@
         "process_url_with_llm": {
             "command": "${workspaceFolder}/.venv/bin/python3",
             "args": [
-                "${workspaceFolder}/server.py",
-                "--host=localhost",
-                "--port=7070",
-                "--workers=1"
+                "${workspaceFolder}/server.py"
             ],
             "env": {
                 "PYTHONUNBUFFERED": "1",
@@ -17,10 +14,7 @@
         "ask_llm": {
             "command": "${workspaceFolder}/.venv/bin/python3",
             "args": [
-                "${workspaceFolder}/server.py",
-                "--host=localhost",
-                "--port=7070",
-                "--workers=1"
+                "${workspaceFolder}/server.py"
             ],
             "env": {
                 "PYTHONUNBUFFERED": "1",
